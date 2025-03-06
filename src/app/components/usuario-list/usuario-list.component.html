@@ -1,0 +1,26 @@
+<h2 class="title is-2">Lista Usuarios</h2>
+
+<button class="createUser" (click)="crearNuevoUsuario()">Crear Nuevo Usuario</button>
+
+<table class="table is-fullwidth">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Nombre</th>
+      <th>Email</th>
+      <th>Acciones</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let usuario of usuarios">
+      <td>{{ usuario.id }}</td>
+      <td>{{ usuario.nombre }}</td>
+      <td>{{ usuario.email }}</td>
+      <td>
+        <button class="button is-info is-small" (click)="verDetalles(usuario.id)">Ver detalles</button>
+        <button class="button is-warning is-small" (click)="editarUsuario(usuario.id)">Editar</button>
+        <button class="button is-danger is-small" (click)="eliminarUsuario(usuario.id)">Eliminar</button>
+      </td>
+    </tr>
+  </tbody>
+</table>

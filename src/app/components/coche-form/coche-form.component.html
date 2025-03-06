@@ -1,0 +1,46 @@
+<h2 class="title is-2">{{ isEditMode ? 'Editar Coche' : 'Crear Coche' }}</h2>
+
+<form class="cocheForm" [formGroup]="cocheForm" (ngSubmit)="guardarCoche()">
+  <div class="field">
+    <label class="label">Marca</label>
+    <div class="control">
+      <input class="input" type="text" formControlName="marca" [ngClass]="{'is-danger': cocheForm.get('marca')?.invalid && cocheForm.get('marca')?.touched}">
+    </div>
+    <p *ngIf="cocheForm.get('marca')?.invalid && cocheForm.get('marca')?.touched" class="help is-danger">
+      La marca es obligatoria.
+    </p>
+  </div>
+
+  <div class="field">
+    <label class="label">Modelo</label>
+    <div class="control">
+      <input class="input" type="text" formControlName="modelo" [ngClass]="{'is-danger': cocheForm.get('modelo')?.invalid && cocheForm.get('modelo')?.touched}">
+    </div>
+    <p *ngIf="cocheForm.get('modelo')?.invalid && cocheForm.get('modelo')?.touched" class="help is-danger">
+      El modelo es obligatorio.
+    </p>
+  </div>
+
+  <div class="field">
+    <label class="label">Año</label>
+    <div class="control">
+      <input class="input" type="number" formControlName="anio" [ngClass]="{'is-danger': cocheForm.get('anio')?.invalid && cocheForm.get('anio')?.touched}">
+    </div>
+    <p *ngIf="cocheForm.get('anio')?.invalid && cocheForm.get('anio')?.touched" class="help is-danger">
+      El año es obligatorio y debe ser un número válido.
+    </p>
+  </div>
+
+  <div class="field">
+    <label class="label">Color</label>
+    <div class="control">
+      <input class="input" type="text" formControlName="color" [ngClass]="{'is-danger': cocheForm.get('color')?.invalid && cocheForm.get('color')?.touched}">
+    </div>
+    <p *ngIf="cocheForm.get('color')?.invalid && cocheForm.get('color')?.touched" class="help is-danger">
+      El color es obligatorio.
+    </p>
+  </div>
+
+  <button class="button is-primary" [disabled]="cocheForm.invalid">Guardar</button>
+  <button type="button" class="button is-light" (click)="cancelar()">Cancelar</button>
+</form>

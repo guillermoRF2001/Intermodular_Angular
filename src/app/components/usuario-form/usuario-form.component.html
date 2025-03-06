@@ -1,0 +1,36 @@
+<h2 class="title is-2">{{ isEditMode ? 'Editar Usuario' : 'Crear Usuario' }}</h2>
+
+<form class="usuarioForm" [formGroup]="usuarioForm" (ngSubmit)="guardarUsuario()">
+  <div class="field">
+    <label class="label">Nombre</label>
+    <div class="control">
+      <input class="input" type="text" formControlName="nombre" [ngClass]="{'is-danger': usuarioForm.get('nombre')?.invalid && usuarioForm.get('nombre')?.touched}">
+    </div>
+    <p *ngIf="usuarioForm.get('nombre')?.invalid && usuarioForm.get('nombre')?.touched" class="help is-danger">
+      El nombre es obligatorio y debe tener al menos 3 caracteres.
+    </p>
+  </div>
+
+  <div class="field">
+    <label class="label">Email</label>
+    <div class="control">
+      <input class="input" type="email" formControlName="email" [ngClass]="{'is-danger': usuarioForm.get('email')?.invalid && usuarioForm.get('email')?.touched}">
+    </div>
+    <p *ngIf="usuarioForm.get('email')?.invalid && usuarioForm.get('email')?.touched" class="help is-danger">
+      Ingresa un email válido.
+    </p>
+  </div>
+
+  <div class="field">
+    <label class="label">Contraseña</label>
+    <div class="control">
+      <input class="input" type="password" formControlName="password" [ngClass]="{'is-danger': usuarioForm.get('password')?.invalid && usuarioForm.get('password')?.touched}">
+    </div>
+    <p *ngIf="usuarioForm.get('password')?.invalid && usuarioForm.get('password')?.touched" class="help is-danger">
+      La contraseña debe tener al menos 6 caracteres.
+    </p>
+  </div>
+
+  <button class="button is-primary" [disabled]="usuarioForm.invalid">Guardar</button>
+  <button type="button" class="button is-light" (click)="cancelar()">Cancelar</button>
+</form>

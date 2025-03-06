@@ -1,0 +1,33 @@
+<h2 class="title is-2">Detalles del Usuario</h2>
+<div class="datosUsuario" *ngIf="usuario; else loading">
+   
+  
+    <div class="field">
+      <label class="label">ID</label>
+      <div class="control">
+        <input class="input" type="text" [value]="usuario.id" readonly>
+      </div>
+    </div>
+  
+    <div class="field">
+      <label class="label">Nombre</label>
+      <div class="control">
+        <input class="input" type="text" [value]="usuario.nombre" readonly>
+      </div>
+    </div>
+  
+    <div class="field">
+      <label class="label">Email</label>
+      <div class="control">
+        <input class="input" type="email" [value]="usuario.email" readonly>
+      </div>
+    </div>
+  
+    <button *ngIf="usuario?.id !== undefined" class="button is-warning" (click)="editarUsuario(usuario.id)">Editar</button>
+    <button *ngIf="usuario?.id !== undefined" class="button is-danger" (click)="eliminarUsuario(usuario.id)">Eliminar</button>
+    <button class="button is-light" (click)="cancelar()">Cancelar</button>
+</div>
+  
+<ng-template #loading>
+    <p class="has-text-centered">Cargando detalles del usuario...</p>
+</ng-template>

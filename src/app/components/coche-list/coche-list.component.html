@@ -1,0 +1,30 @@
+<h2 class="title is-2">Lista de Coches</h2>
+
+<button class="createCoche" (click)="crearNuevoCoche()">Crear Nuevo Coche</button>
+
+<table class="table is-fullwidth">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Marca</th>
+      <th>Modelo</th>
+      <th>Año</th>
+      <th>Color</th>
+      <th>Acciones</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let coche of coches">
+      <td>{{ coche.id }}</td>
+      <td>{{ coche.marca }}</td>
+      <td>{{ coche.modelo }}</td>
+      <td>{{ coche.anio }}</td>
+      <td>{{ coche.color }}</td>
+      <td>
+        <button class="button is-info is-small" (click)="verDetalles(coche.id)">Ver detalles</button>
+        <button class="button is-warning is-small" (click)="editarCoche(coche.id)">Editar</button>
+        <button class="button is-danger is-small" (click)="eliminarCoche(coche.id)">Eliminar</button>
+      </td>
+    </tr>
+  </tbody>
+</table>

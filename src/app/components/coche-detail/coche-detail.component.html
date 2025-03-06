@@ -1,0 +1,45 @@
+<h2 class="title is-2">Detalles del Coche</h2>
+<div class="datosCoche" *ngIf="coche; else loading">
+  <div class="field">
+    <label class="label">ID</label>
+    <div class="control">
+      <input class="input" type="text" [value]="coche.id" readonly />
+    </div>
+  </div>
+
+  <div class="field">
+    <label class="label">Marca</label>
+    <div class="control">
+      <input class="input" type="text" [value]="coche.marca" readonly />
+    </div>
+  </div>
+
+  <div class="field">
+    <label class="label">Modelo</label>
+    <div class="control">
+      <input class="input" type="text" [value]="coche.modelo" readonly />
+    </div>
+  </div>
+
+  <div class="field">
+    <label class="label">Año</label>
+    <div class="control">
+      <input class="input" type="text" [value]="coche.anio" readonly />
+    </div>
+  </div>
+
+  <div class="field">
+    <label class="label">Color</label>
+    <div class="control">
+      <input class="input" type="text" [value]="coche.color" readonly />
+    </div>
+  </div>
+
+  <button *ngIf="coche?.id !== undefined" class="button is-warning" (click)="editarCoche(coche.id)">Editar</button>
+  <button *ngIf="coche?.id !== undefined" class="button is-danger" (click)="eliminarCoche(coche.id)">Eliminar</button>
+  <button class="button is-light" (click)="cancelar()">Cancelar</button>
+</div>
+
+<ng-template #loading>
+  <p class="has-text-centered">Cargando detalles del coche...</p>
+</ng-template>
